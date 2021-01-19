@@ -1,0 +1,20 @@
+{
+  "name": "api-dh-loja",
+  "version": "1.0.0",
+  "description": "Api de loja desenvolvida no curso ReactNode da Digital House",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfelipemm/api-dh-loja.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jfelipemm/api-dh-loja/issues"
+  },
+  "homepage": "https://github.com/jfelipemm/api-dh-loja#readme"
+}
