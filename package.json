@@ -2,10 +2,11 @@
   "name": "api-dh-loja",
   "version": "1.0.0",
   "description": "Api de loja desenvolvida no curso ReactNode da Digital House",
-  "main": "./src/index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/index.ts"
+    "preinstall": "npm i nodemon -g",
+    "start": "nodemon src/index.ts"
   },
   "repository": {
     "type": "git",
