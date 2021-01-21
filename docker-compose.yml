@@ -12,10 +12,7 @@ services:
       - ENV=local
     ports:
       - "8000:3000"
-    volumes:
-      - type: bind
-        source: ./app
-        target: /app
+
     networks:
       - rede
   db:

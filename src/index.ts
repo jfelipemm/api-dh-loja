@@ -7,8 +7,9 @@ app.db = db;
 app.use(bodyParser);
 
 consign()
-  .include("../src/config/api.ts")
-  .then("../src/routes/ApiRoutes.ts")
+  .include("./src/config/api.ts")
+
+  .then("./src/routes/ApiRoutes.ts")
   .into(app)
 
 
