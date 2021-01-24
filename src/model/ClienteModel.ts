@@ -1,4 +1,4 @@
-export class ClienteModel {
+export interface ClienteModel {
   id: number;
   nome: string;
   endereco: string;
