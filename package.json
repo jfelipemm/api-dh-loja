@@ -20,12 +20,14 @@
   },
   "homepage": "https://github.com/jfelipemm/api-dh-loja#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "knex": "^0.21.16",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.22",
