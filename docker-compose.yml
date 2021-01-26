@@ -1,23 +1,5 @@
 version: "3.4"
 services:
-  myapi:
-    image: node-api-ts
-    container_name: node-api-ts
-    build:
-      dockerfile: Dockerfile
-      context: .
-      args:
-        - ENV=local
-    environment:
-      - ENV=local
-    ports:
-      - "8000:3000"
-    volumes:
-      - type: bind
-        source: ./app
-        target: /app
-    networks:
-      - rede
   db:
     image: mysql:5.7
     restart: always
@@ -36,7 +18,24 @@ services:
         target: /var/lib/mysql
     networks:
       - rede
+  myapi:
+    image: node-api-ts
+    container_name: node-api-ts
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - ENV=local
+    environment:
+      - ENV=local
+    ports:
+      - "8000:3000"
+    volumes:
+      - type: bind
+        source: .
+        target: /var/www
+    networks:
+      - rede
 networks:
   rede:
-    external:
-      name: rede
+    name: rede

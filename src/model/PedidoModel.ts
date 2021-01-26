@@ -1,4 +1,4 @@
-export class PedidoModel {
+export interface PedidoModel {
   id: number;
   data: Date;
   total: number;
