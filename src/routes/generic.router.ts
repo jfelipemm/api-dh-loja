@@ -1,16 +1,16 @@
 import { Router } from "express"
-import { GenericRepository } from "../config/generic.repository"
+import { GenericController } from "../controllers/generic.controller"
 
 export class GenericRouter<T> {
 
-    private repository: GenericRepository<T>
+    private repository: GenericController<T>
     routes = Router()
 
-    constructor(tableName: string, repository?: GenericRepository<T>) {
+    constructor(tableName: string, primaryKeyName: string, repository?: GenericController<T>) {
         if (repository) {
             this.repository =  repository
         } else {
-            this.repository =  new GenericRepository<T>(tableName)
+            this.repository =  new GenericController<T>(tableName, primaryKeyName)
         }
 
         this.routes.route('')
