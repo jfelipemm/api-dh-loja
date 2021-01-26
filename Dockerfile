@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:14
 RUN apt update
 MAINTAINER HACKATON DIGITAL HOUSE
 COPY . /var/www
