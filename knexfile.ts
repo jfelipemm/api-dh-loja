@@ -8,6 +8,8 @@ module.exports = {
     password: 'password'
   },
   migrations: {
-    tableName: 'knex_migrations'
+    tableName: 'knex_migrations',
+    extension: 'ts',
+    directory: 'migrations'
   }
 };
