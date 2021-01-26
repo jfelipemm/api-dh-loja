@@ -2,15 +2,11 @@ import * as Knex from 'knex';
 
 export async function up(knex: Knex): Promise<any> {
   return knex.schema.createTable('pedidos', (table: Knex.TableBuilder) => {
-    table.increments('id').primary()
-    table.timestamp("data").notNullable()
+    table.increments('id_pedido').primary()
+    table.dateTime('data').notNullable()
     table.decimal('total').notNullable()
-    
-    // AQUI VAI O ID APONTANDO PARA A TABELA DE CLIENTES
-    // table.string('cliente_id').notNullable()
-
-    // AQUI VAI O ID APONTANDO PARA A TABELA DE FUNCIONARIOS
-    //table.string('funcionario_id').notNullable()
+    table.integer('cliente_id').unsigned().notNullable().references('id_cliente').inTable('clientes')
+    table.integer('funcionario_id').unsigned().notNullable().references('id_funcionario').inTable('funcionarios')
   });
 }
 
