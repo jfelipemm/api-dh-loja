@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
-import db from "./db";
+import db from "../config/db";
 
-export class GenericRepository<T> {
+export class GenericController<T> {
 
-    constructor(private tableName: string) {
+    constructor(private tableName: string, private primaryKeyName: string) {
     }
 
     get = (req: Request, res: Response) => {
@@ -23,9 +23,11 @@ export class GenericRepository<T> {
     
     getById = (req: Request, res: Response) => {
         const id: number = Number(req.params.id)
+        const filter: {[k: string]: any} = {};
+        filter[`${this.primaryKeyName}`] = id
     
         db(this.tableName)
-            .where({id: id})
+            .where(filter)
             .first()
             .then((obj: T) => res.status(200).json(obj))
             .catch((err: any) => res.status(500).json(err))
@@ -34,20 +36,24 @@ export class GenericRepository<T> {
     put = (req: Request, res: Response) => {
         const id: number = Number(req.params.id)
         const obj: T = req.body
+        const filter: {[k: string]: any} = {};
+        filter[`${this.primaryKeyName}`] = id
     
         db(this.tableName)
             .update(obj)
-            .where({id: id})
+            .where(filter)
             .then((data: any) => res.status(200).json(data))
             .catch((err: any) => res.status(500).json(err))
     }
     
     remove = (req: Request, res: Response) => {
         const id: number = Number(req.params.id)
+        const filter: {[k: string]: any} = {};
+        filter[`${this.primaryKeyName}`] = id
     
         db(this.tableName)
             .del()
-            .where({id: id})
+            .where(filter)
             .then(() => res.status(204).send())
             .catch((err: any) => res.status(500).json(err))
     }
