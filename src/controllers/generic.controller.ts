@@ -3,12 +3,16 @@ import db from '../config/db'
 
 export class GenericController<T> {
 
-    constructor(private tableName: string, private primaryKeyName: string) {
-    }
+    constructor(private tableName: string, private primaryKeyName: string) {}
+    
 
     get = (req: Request, res: Response) => {
         db(this.tableName)
-            .then((objs: T) => res.status(200).json(objs))
+            .then((objs: T) => {
+                res.header("Access-Control-Allow-Origin", "*")
+                res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+                res.status(200).json(objs)
+            })
             .catch((err: any) => res.status(500).json(err))
     }
     
